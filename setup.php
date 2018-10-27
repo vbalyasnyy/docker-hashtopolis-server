@@ -6,6 +6,7 @@ use DBA\Config;
 use DBA\QueryFilter;
 use DBA\RightGroup;
 use DBA\User;
+use DBA\Factory;
 
 require_once(dirname(__FILE__) . "/../inc/load.php");
 
@@ -20,7 +21,7 @@ require_once(dirname(__FILE__) . "/../inc/load.php");
     $csrf = str_replace("__CSRF__", $key, $csrf);
     file_put_contents(dirname(__FILE__) . "/../inc/CSRF.class.php", $csrf);
     
-    if ($FACTORIES::getUserFactory()->getDB(true) === null) {
+    if (Factory::getUserFactory()->getDB(true) === null) {
       //connection not valid
 	printf ( "Unable to connect to the Database\n" );
         exit;
