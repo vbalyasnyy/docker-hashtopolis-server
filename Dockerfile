@@ -17,7 +17,6 @@ RUN	apt update && \
 	rm -rf /var/lib/apt /var/lib/dpkg /var/cache/apt /usr/share/doc /usr/share/man /usr/share/info
 COPY	entrypoint.sh 	/
 VOLUME /var/www/html/inc/conf.php
-COPY	conf.php /var/www/html/inc
 COPY	conf.php /var/backup.conf.php
 COPY	adduser.php /var/www/html/install/
 RUN	cp -r /var/www/html/install /var/backup.install
