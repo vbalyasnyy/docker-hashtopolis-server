@@ -55,6 +55,11 @@ then
 	MYSQL_PASSWORD=$MYSQL_ROOT_PASSWORD
 fi
 
+if [ ! -f /var/www/html/inc/conf.php ]
+then
+	cp /var/backup.conf.php /var/www/html/inc/conf.php
+fi
+
 if grep "PENDING" /var/www/html/inc/conf.php &>/dev/null
 then
 #	CHECK MYSQL AVAILABILITY
