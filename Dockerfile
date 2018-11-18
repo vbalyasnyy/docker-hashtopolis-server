@@ -8,7 +8,8 @@ RUN	apt update && \
 	git clone https://github.com/s3inlc/hashtopolis.git && \
 	cd hashtopolis && \
 	git checkout tags/v0.10.0 && \
-	cp -r src/* html/ && \
+	cd .. && \
+	cp -r hashtopolis/src/* html/ && \
 	chown -R www-data:www-data /var/www/html && \
 	ln -sf /dev/stdout /var/log/apache2/access.log && \
 	ln -sf /dev/sterr /var/log/apache2/error.log && \
