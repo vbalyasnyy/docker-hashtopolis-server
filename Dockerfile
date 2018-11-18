@@ -15,6 +15,7 @@ RUN	apt update && \
 COPY	entrypoint.sh 	/
 VOLUME /var/www/html/inc/conf.php
 COPY	conf.php /var/www/html/inc
+COPY	conf.php /var/backup.conf.php
 COPY	setup.php adduser.php /var/www/html/install/
 RUN	cp -r /var/www/html/install /var/backup.install
 EXPOSE 80
