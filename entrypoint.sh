@@ -77,22 +77,25 @@ then
 		echo "Used: $MYSQL"
 		exit 20
 	fi
-
+	
+	if [ -z "$DO_NOT_SEED" ]
+	then
 #	CREATE DB
-	$MYSQL -e "CREATE database $MYSQL_DB;"
+		$MYSQL -e "CREATE database $MYSQL_DB;"
 #	APPEND DB
-	MYSQL="$MYSQL $MYSQL_DB"
-	if [ $? -ne 0 ]
-	then
-		echo "Failed to create the database... insufficient access??? already exists??? this shouldn't happen, I'm doing setup..."
-		exit 21
-	fi
+		MYSQL="$MYSQL $MYSQL_DB"
+		if [ $? -ne 0 ]
+		then
+			echo "Failed to create the database... insufficient access??? already exists??? this shouldn't happen, I'm doing setup..."
+			exit 21
+		fi
 #	IMPORT DB
-	$MYSQL < /var/www/html/install/hashtopolis.sql
-	if [ $? -ne 0 ]
-	then
-		echo "DB Import Failed!!!"
-		exit 12
+		$MYSQL < /var/www/html/install/hashtopolis.sql
+		if [ $? -ne 0 ]
+		then
+			echo "DB Import Failed!!!"
+			exit 12
+		fi
 	fi
 #	CONFIGURE DB
 #	RUN SETUP & ADD USER
@@ -114,9 +117,10 @@ then
 fi
 
 sed -i -e "s/H8_USER/$H8_USER/" -e  "s/H8_PASS/$H8_PASS/" -e "s/H8_EMAIL/$H8_EMAIL/" /var/www/html/install/adduser.php
-
-/usr/bin/php /var/www/html/install/adduser.php
-
+if [ -z "$DO_NOT_SEED" ]
+then
+	/usr/bin/php /var/www/html/install/adduser.php
+fi
 #	PHP MAIL SETTINGS
 if [ -n "$PHP_MAIL_HOST" ]
 then
