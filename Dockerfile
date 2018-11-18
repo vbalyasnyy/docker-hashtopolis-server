@@ -17,7 +17,7 @@ RUN	apt update && \
 	rm -rf /var/lib/apt /var/lib/dpkg /var/cache/apt /usr/share/doc /usr/share/man /usr/share/info
 COPY	entrypoint.sh 	/
 COPY	conf.php /var/backup.conf.php
-COPY	adduser.php /var/www/html/install/
+COPY	setup.php adduser.php /var/www/html/install/
 RUN	cp -r /var/www/html/install /var/backup.install
 EXPOSE 80
 ENTRYPOINT [ "/entrypoint.sh" ]
