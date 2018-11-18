@@ -13,7 +13,8 @@ RUN	apt update && \
 	echo "ServerName Hashtopolis" > /etc/apache2/conf-enabled/serverName.conf && \
 	rm -rf /var/lib/apt /var/lib/dpkg /var/cache/apt /usr/share/doc /usr/share/man /usr/share/info
 COPY	entrypoint.sh 	/
-COPY	db.php /var/www/html/inc
+VOLUME /var/www/html/inc/conf.php
+COPY	conf.php /var/www/html/inc
 COPY	setup.php adduser.php /var/www/html/install/
 RUN	cp -r /var/www/html/install /var/backup.install
 EXPOSE 80
