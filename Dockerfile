@@ -7,7 +7,7 @@ RUN	apt update && \
 	rm -f html/index.html && \
 	git clone https://github.com/s3inlc/hashtopolis.git && \
 	cd hashtopolis && \
-        git checkout tags/v0.10.0 && \
+	git checkout tags/v0.10.0 && \
 	cp -r src/* html/ && \
 	chown -R www-data:www-data /var/www/html && \
 	ln -sf /dev/stdout /var/log/apache2/access.log && \
