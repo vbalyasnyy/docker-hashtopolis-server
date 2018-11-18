@@ -1,6 +1,6 @@
 <?php
 
-require_once(dirname(__FILE__) . "/../inc/db.php");
+require_once(dirname(__FILE__) . "/../inc/conf.php");
 use DBA\AccessGroupUser;
 use DBA\Config;
 use DBA\QueryFilter;
