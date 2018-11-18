@@ -97,12 +97,12 @@ then
 			exit 21
 		fi
 #	IMPORT DB
-		$MYSQL < /var/www/html/install/hashtopolis.sql
-		if [ $? -ne 0 ]
-		then
-			echo "DB Import Failed!!!"
-			exit 12
-		fi
+#		$MYSQL < /var/www/html/install/hashtopolis.sql
+#		if [ $? -ne 0 ]
+#		then
+#			echo "DB Import Failed!!!"
+#			exit 12
+#		fi
 	fi
 #	CONFIGURE DB
 #	RUN SETUP & ADD USER
