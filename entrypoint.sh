@@ -59,6 +59,7 @@ if [ ! -f /var/www/html/inc/conf.php ]
 then
 	cp -r /var/www/hashtopolis/src/inc /var/www/html/
 	cp /var/backup.conf.php /var/www/html/inc/conf.php
+	chown -R www-data:www-data /var/www/html
 fi
 
 if grep "PENDING" /var/www/html/inc/conf.php &>/dev/null
