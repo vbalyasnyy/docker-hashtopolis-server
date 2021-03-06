@@ -18,6 +18,7 @@ RUN	apt update && \
 	ln -sf /dev/sterr /var/log/apache2/error.log && \
 	echo "ServerName Hashtopolis" > /etc/apache2/conf-enabled/serverName.conf && \
 	rm -rf /var/lib/apt /var/lib/dpkg /var/cache/apt /usr/share/doc /usr/share/man /usr/share/info
+COPY	hashes.sh 	/
 COPY	entrypoint.sh 	/
 COPY	conf.php /var/backup.conf.php
 COPY	setup.php adduser.php /var/www/html/install/
